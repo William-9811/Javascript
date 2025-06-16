@@ -39,12 +39,12 @@
   </table>
 
   <script>
-    var newLine = true;
-    var value1;
-    var currentOperator;
+    let newLine = true;
+    let value1;
+    let currentOperator;
 
     function digitBtnPressed(button) {
-      var input = document.getElementById("inputBox");
+      const input = document.getElementById("inputBox");
       if (newLine || input.value === "0") {
         input.value = button;
         newLine = false;
@@ -59,28 +59,55 @@
     }
 
     function operatorBtnPressed(operator) {
-      currentOperator = operator;
       value1 = parseFloat(document.getElementById("inputBox").value);
+      currentOperator = operator;
       newLine = true;
     }
 
     function equalsBtnPressed() {
-      var value2 = parseFloat(document.getElementById("inputBox").value);
-      var finalTotal;
+      const value2 = parseFloat(document.getElementById("inputBox").value);
+      let finalTotal;
 
       switch (currentOperator) {
         case "+": finalTotal = value1 + value2; break;
         case "-": finalTotal = value1 - value2; break;
         case "*": finalTotal = value1 * value2; break;
-        case "/":
-          finalTotal = value2 !== 0 ? value1 / value2 : "Error";
-          break;
-        default:
-          finalTotal = value2;
+        case "/": finalTotal = value2 !== 0 ? value1 / value2 : "Error"; break;
+        case "^": finalTotal = Math.pow(value1, value2); break;
+        default: finalTotal = value2;
       }
 
       document.getElementById("inputBox").value = finalTotal;
       newLine = true;
+    }
+
+    function applyFunction(func) {
+      let val = parseFloat(document.getElementById("inputBox").value);
+      let result;
+
+      switch (func) {
+        case "sqrt": result = Math.sqrt(val); break;
+        case "cbrt": result = Math.cbrt(val); break;
+        case "square": result = val * val; break;
+        case "power":
+          value1 = val;
+          currentOperator = "^";
+          newLine = true;
+          return;
+        case "log": result = Math.log10(val); break;
+        case "ln": result = Math.log(val); break;
+        case "sin": result = Math.sin(toRadians(val)); break;
+        case "cos": result = Math.cos(toRadians(val)); break;
+        case "tan": result = Math.tan(toRadians(val)); break;
+        default: result = val;
+      }
+
+      document.getElementById("inputBox").value = isNaN(result) ? "Error" : result;
+      newLine = true;
+    }
+
+    function toRadians(degrees) {
+      return degrees * (Math.PI / 180);
     }
   </script>
 </body>
