@@ -6,21 +6,21 @@
 <body>
   <table border="1">
     <tr>
-      <td colspan="4">
-        <input type="text" id="inputBox" value="0" readonly>
-      </td>
+      <td colspan="4"><input type="text" id="inputBox" value="0" readonly></td>
     </tr>
+
+    <!-- Digits and Operators -->
     <tr>
       <td onclick="digitBtnPressed(7)">7</td>
       <td onclick="digitBtnPressed(8)">8</td>
       <td onclick="digitBtnPressed(9)">9</td>
-      <td onclick="operatorBtnPressed('*')">x</td>
+      <td onclick="operatorBtnPressed('*')">×</td>
     </tr>
     <tr>
       <td onclick="digitBtnPressed(4)">4</td>
       <td onclick="digitBtnPressed(5)">5</td>
       <td onclick="digitBtnPressed(6)">6</td>
-      <td onclick="operatorBtnPressed('-')">-</td>
+      <td onclick="operatorBtnPressed('-')">−</td>
     </tr>
     <tr>
       <td onclick="digitBtnPressed(1)">1</td>
@@ -31,10 +31,28 @@
     <tr>
       <td colspan="2" onclick="digitBtnPressed(0)">0</td>
       <td onclick="BtnACPressed()">AC</td>
-      <td onclick="operatorBtnPressed('/')">/</td>
+      <td onclick="operatorBtnPressed('/')">÷</td>
     </tr>
     <tr>
       <td colspan="4" onclick="equalsBtnPressed()">=</td>
+    </tr>
+
+    <!-- Scientific Functions -->
+    <tr>
+      <td onclick="applyFunction('sqrt')">√</td>
+      <td onclick="applyFunction('cbrt')">∛</td>
+      <td onclick="applyFunction('square')">x²</td>
+      <td onclick="applyFunction('power')">xʸ</td>
+    </tr>
+    <tr>
+      <td onclick="applyFunction('log')">log</td>
+      <td onclick="applyFunction('ln')">ln</td>
+      <td onclick="applyFunction('sin')">sin</td>
+      <td onclick="applyFunction('cos')">cos</td>
+    </tr>
+    <tr>
+      <td onclick="applyFunction('tan')">tan</td>
+      <td colspan="3"></td>
     </tr>
   </table>
 
